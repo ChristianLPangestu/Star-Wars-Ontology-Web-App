@@ -1,0 +1,124 @@
+@prefix : <http://starwars-ontology.com/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:ForceUser a owl:Class ;
+    rdfs:label "Force User"@en ;
+    rdfs:comment "A user of the Force, either a Jedi or Sith"@en .
+
+:Organization a owl:Class ;
+    rdfs:label "Organization"@en ;
+    rdfs:comment "An organization within the Star Wars universe"@en .
+
+:Weapon a owl:Class ;
+    rdfs:label "Weapon"@en ;
+    rdfs:comment "A weapon used in the Star Wars universe"@en .
+
+:Planet a owl:Class ;
+    rdfs:label "Planet"@en ;
+    rdfs:comment "A planet within the Star Wars universe"@en .
+
+:Character a owl:Class ;
+    rdfs:label "Character"@en ;
+    rdfs:comment "A character within the Star Wars universe"@en .
+
+:Vehicle a owl:Class ;
+    rdfs:label "Vehicle"@en ;
+    rdfs:comment "A vehicle used in the Star Wars universe"@en .
+
+:Technology a owl:Class ;
+    rdfs:label "Technology"@en ;
+    rdfs:comment "A technology used in the Star Wars universe"@en .
+
+:Event a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "An event within the Star Wars universe"@en .
+
+:hasName a owl:DatatypeProperty ;
+    rdfs:label "has name"@en ;
+    rdfs:domain :Character ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The name of an entity within the Star Wars universe"@en .
+
+:hasDescription a owl:DatatypeProperty ;
+    rdfs:label "has description"@en ;
+    rdfs:domain :Character ;
+    rdfs:range xsd:string ;
+    rdfs:comment "A brief description of an entity within the Star Wars universe"@en .
+
+:hasPowerLevel a owl:DatatypeProperty ;
+    rdfs:label "has power level"@en ;
+    rdfs:domain :ForceUser ;
+    rdfs:range xsd:string ;
+    rdfs:comment "The power level of a Force user within the Star Wars universe"@en .
+
+:isMasterOf a owl:ObjectProperty ;
+    rdfs:label "is master of"@en ;
+    rdfs:domain :ForceUser ;
+    rdfs:range :ForceUser ;
+    rdfs:comment "Indicates that one Force user is the master of another"@en .
+
+:isMemberOf a owl:ObjectProperty ;
+    rdfs:label "is member of"@en ;
+    rdfs:domain :Character ;
+    rdfs:range :Organization ;
+    rdfs:comment "Indicates that a character is a member of an organization"@en .
+
+:AnakinSkywalker a owl:NamedIndividual, :ForceUser ;
+    :hasName "Anakin Skywalker" ;
+    :hasPowerLevel "High" ;
+    :isMasterOf :AhsokaTano ;
+    :isMemberOf :JediOrder .
+
+:ObiWanKenobi a owl:NamedIndividual, :ForceUser ;
+    :hasName "Obi-Wan Kenobi" ;
+    :hasPowerLevel "High" ;
+    :isMasterOf :AnakinSkywalker ;
+    :isMemberOf :JediOrder .
+
+:AhsokaTano a owl:NamedIndividual, :ForceUser ;
+    :hasName "Ahsoka Tano" ;
+    :hasPowerLevel "Medium" ;
+    :isMemberOf :JediOrder .
+
+:Lightsaber a owl:NamedIndividual, :Weapon ;
+    :hasName "Lightsaber" ;
+    :isMemberOf :JediOrder .
+
+:Blaster a owl:NamedIndividual, :Weapon ;
+    :hasName "Blaster" ;
+    :isMemberOf :GalacticEmpire .
+
+:ThermalDetonator a owl:NamedIndividual, :Weapon ;
+    :hasName "Thermal Detonator" ;
+    :isMemberOf :BountyHuntersGuild .
+
+:Tatooine a owl:NamedIndividual, :Planet ;
+    :hasName "Tatooine" ;
+    :isMemberOf :GalacticEmpire .
+
+:Naboo a owl:NamedIndividual, :Planet ;
+    :hasName "Naboo" ;
+    :isMemberOf :GalacticRepublic .
+
+:Coruscant a owl:NamedIndividual, :Planet ;
+    :hasName "Coruscant" ;
+    :isMemberOf :GalacticRepublic .
+
+:Kashyyyk a owl:NamedIndividual, :Planet ;
+    :hasName "Kashyyyk" ;
+    :isMemberOf :RebelAlliance .
+
+:Endor a owl:NamedIndividual, :Planet ;
+    :hasName "Endor" ;
+    :isMemberOf :RebelAlliance .
+
+:MillenniumFalcon a owl:NamedIndividual, :Vehicle ;
+    :hasName "Millennium Falcon" ;
+    :isMemberOf :RebelAlliance .
+
+:BattleOfEndor a owl:NamedIndividual, :Event ;
+    :hasName "Battle of Endor" ;
+    :isMemberOf :GalacticCivilWar .
